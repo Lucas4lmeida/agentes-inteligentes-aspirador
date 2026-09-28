@@ -1,6 +1,6 @@
-# Agentes inteligentes: aspirador de po
+# Agentes inteligentes: aspirador de pó
 
-Comparacao simples entre um agente reativo simples e um agente reativo baseado em modelos, usando Python no terminal.
+Comparação simples entre um agente reativo simples e um agente reativo baseado em modelos, usando Python no terminal.
 
 ## Executar
 
@@ -13,7 +13,7 @@ python agentes.py
 ## Agentes
 
 - **Reativo simples:** aspira quando encontra sujeira. Caso contrario, sorteia um caminho livre, sem guardar os locais visitados.
-- **Reativo com memoria:** aspira quando encontra sujeira. Caso contrario, escolhe o vizinho menos visitado. Guarda a posicao relativa ao inicio e a quantidade de visitas.
+- **Reativo com memória:** aspira quando encontra sujeira. Caso contrario, escolhe o vizinho menos visitado. Guarda a posição relativa ao inicio e a quantidade de visitas.
 
 Os sensores informam apenas a sujeira no quadrado atual e as passagens vizinhas livres. Os agentes nao recebem o mapa nem suas dimensoes. O ambiente e deterministico, mesmo que o agente simples use sorteio para escolher suas acoes.
 
@@ -25,7 +25,7 @@ Os sensores informam apenas a sujeira no quadrado atual e as passagens vizinhas 
 - 80 periodos por execucao, com uma acao por periodo.
 - Mesmas configuracoes iniciais para os dois agentes.
 - Semente 42 no sorteio, para reproduzir os resultados.
-- Nao aparece sujeira nova.
+- Não aparece sujeira nova.
 
 **Pontos 1:** soma dos quadrados limpos ao fim de cada periodo, incluindo os que ja estavam limpos. Obstaculos nao pontuam.
 
