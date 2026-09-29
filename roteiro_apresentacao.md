@@ -1,51 +1,74 @@
 # Roteiro de apresentação
 
-Tempo sugerido: aproximadamente 7 minutos e 30 segundos. As mesmas falas estão nas notas dos slides.
+Tempo sugerido: cerca de 8 minutos. Se for projetar a animação, use só o cenário 2 e avance até o período 18, quando o agente com memória para.
 
 ## Slide 1: Avaliação experimental de agentes inteligentes
 
 Tempo sugerido: 1 minuto
 
-O objetivo foi comparar dois aspiradores: um reativo simples e outro reativo baseado em modelos, que chamamos de agente com memória. Criamos um ambiente 4 por 4, com quatro quadrados inicialmente sujos em cada cenário. O primeiro cenário não tem obstáculos, e os outros dois têm dois obstáculos cada. Também mudamos a posição inicial e a distribuição da sujeira. Cada agente roda separadamente por 80 períodos, nas mesmas condições iniciais. O mundo é determinístico: uma ação nas mesmas condições tem sempre o mesmo efeito. A escolha aleatória do agente simples não altera essa propriedade. A observação é parcial: os agentes detectam apenas a sujeira onde estão e as passagens vizinhas. Eles não recebem o mapa nem suas dimensões. Não surge sujeira nova.
+O objetivo foi comparar dois aspiradores: um reativo simples e outro reativo baseado em modelo. O ambiente é uma grade 4 por 4, determinística e parcialmente observável. Os agentes percebem a sujeira da célula atual e as passagens vizinhas. Não recebem o mapa, o tamanho, os obstáculos nem a sujeira distante. Não surge sujeira nova. Há três mapas fixos e trinta mapas aleatórios, com a mesma condição inicial para os dois programas.
 
 ## Slide 2: Como os agentes escolhem suas ações
 
-Tempo sugerido: 1 minuto e 30 segundos
+Tempo sugerido: 1 minuto e 40 segundos
 
-Os dois agentes usam regras condição-ação. A primeira regra é igual: se o quadrado atual está sujo, aspirar. Se estiver limpo, o agente simples sorteia uma passagem livre. Ele não registra os lugares que visitou. A semente 42 permite repetir as escolhas e os resultados. O outro agente mantém uma posição relativa ao ponto de partida e um dicionário com o número de visitas a cada posição. O início recebe uma visita e posições desconhecidas valem zero. Quando se move, ele atualiza sua posição e aumenta a contagem do destino. Entre as passagens livres, escolhe o destino menos visitado. Em empate, segue a ordem direita, baixo, esquerda e cima. Como o sensor informa passagem livre e o ambiente é determinístico, essa atualização corresponde ao movimento real. Sem passagem livre, os agentes ficam parados naquele período.
+Os dois usam regras condição-ação. A primeira é igual: se o quadrado atual está sujo, aspirar.
+
+O agente simples, se está limpo, sorteia uma passagem livre. Não registra o que já viu. A semente 42 repete as escolhas.
+
+O agente com memória guarda um estado interno em coordenadas relativas ao ponto de partida: células limpas, bloqueadas ou ainda não visitadas, e o número de visitas. A cada período ele faz três coisas. Primeiro, atualiza o estado com o percepto local. Depois, aplica a regra: se há sujeira conhecida ou célula não visitada, dá um passo em direção à mais próxima; se não há, para. No empate, prefere o vizinho menos visitado e, depois, a ordem direita, baixo, esquerda e cima. Por último, aplica a ação no próprio modelo, porque o sensor já informou que a passagem está livre e o efeito no mundo é determinístico.
+
+A sujeira distante não entra no mapa. O sensor só acusa sujeira debaixo do agente, e a regra aspira nessa mesma hora.
 
 ## Slide 3: Regras de avaliação
 
 Tempo sugerido: 1 minuto
 
-Cada ação ocupa um período, incluindo aspirar. Calculamos a primeira medida somando o número de quadrados limpos ao fim de cada um dos 80 períodos. Os quadrados que já estavam limpos também contam, e os obstáculos ficam fora da conta. Se houver seis quadrados limpos em um período, ganhamos seis pontos naquele período. Se continuarem limpos no próximo, ganhamos mais seis. Por isso, limpar cedo é vantajoso. Para a segunda medida, adotamos a primeira pontuação menos o número de movimentos realizados. O enunciado não repete a expressão em cada período ao descrever a segunda medida, então essa é uma interpretação explicitamente assumida. Aspirar ocupa tempo, mas não sofre o desconto de movimento. O simulador conhece todo o ambiente para pontuar, mas os agentes só recebem informações locais.
+Cada ação ocupa um período, inclusive aspirar. A primeira medida soma os quadrados limpos ao fim de cada um dos 80 períodos. Quadrados que já estavam limpos também contam. Obstáculos ficam de fora. Limpar cedo aumenta essa soma. A segunda medida é a primeira menos o número de movimentos. Aspirar gasta tempo, mas não entra nesse desconto. O simulador conhece o ambiente inteiro para pontuar. Os agentes recebem só a informação local.
 
 ## Slide 4: Resultados dos três cenários
 
 Tempo sugerido: 1 minuto e 30 segundos
 
-Esta tabela mostra as seis execuções, com um teste por agente em cada cenário. O agente com memória terminou sem sujeira em todos os casos. O simples deixou um quadrado sujo no cenário dois. Quando um agente limpa os quatro quadrados, gasta quatro ações aspirando e 76 se movendo. No cenário dois, o simples aspira três vezes e se move 77 vezes. As pontuações mostram também quando ele limpou: nos cenários um e três, ambos terminaram sem sujeira e fizeram o mesmo número de movimentos, mas o agente com memória obteve mais pontos por limpar mais cedo no conjunto da execução. As médias abaixo usam os três cenários com o mesmo peso. Comparamos os agentes dentro de cada cenário, pois a presença de obstáculos altera a quantidade de quadrados que podem pontuar.
+| Cenário | Agente | Sujeira | Alc. | Mov. | Parou | Pontos 1 | Pontos 2 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| 1 | Simples | 0 | 0 | 76 | — | 1174 | 1098 |
+| 1 | Com memória | 0 | 0 | 15 | 20 | 1256 | 1241 |
+| 2 | Simples | 1 | 1 | 77 | — | 1009 | 932 |
+| 2 | Com memória | 0 | 0 | 13 | 18 | 1083 | 1070 |
+| 3 | Simples | 0 | 0 | 76 | — | 1009 | 933 |
+| 3 | Com memória | 0 | 0 | 19 | 24 | 1071 | 1052 |
+
+Médias: simples, 1064,00 e 987,67; com memória, 1136,67 e 1121,00.
+
+Alc. é a sujeira que ainda dava para alcançar. No cenário 2 o agente simples termina com um quadrado sujo alcançável. O agente com memória limpa os quatro nos três mapas e para entre os períodos 18 e 24. A primeira pontuação sobe porque a limpeza acontece mais cedo. A segunda sobe também porque, depois disso, ele não continua se movendo.
 
 ## Slide 5: Comparação das pontuações
 
-Tempo sugerido: 1 minuto
+Tempo sugerido: 1 minuto e 20 segundos
 
-Os gráficos mostram as mesmas pontuações da tabela. Azul representa o agente simples e verde representa o agente com memória. Cada grupo reúne os dois agentes no mesmo cenário. O gráfico da esquerda mostra a limpeza acumulada e o da direita desconta os movimentos. Ambos começam em zero e usam a mesma escala. O agente com memória ficou à frente nos três cenários, nas duas medidas. A diferença média foi de aproximadamente 70,67 pontos na primeira medida e 71 pontos na segunda. A penalização quase não altera a comparação, porque o número de movimentos é praticamente igual. Estes resultados se referem a três configurações fixas e a uma única semente do agente simples, sem estimar a variabilidade de outras escolhas aleatórias.
+O gráfico em `resultados.svg` repete os três cenários e mostra a média dos trinta mapas aleatórios, com o desvio entre configurações. Azul é o agente simples e verde é o agente com memória.
+
+Nesses trinta mapas, a média de Pontos 1 foi 1108,29 para o simples e 1162,20 para o com memória. A média de Pontos 2 foi 1031,60 e 1146,80. O desvio entre cenários ficou em torno de 77 pontos para o simples e 64 para o com memória. O agente com memória teve Pontos 2 maior nos 30 casos. Ele removeu a sujeira alcançável em todos. O simples fez isso em 127 das 150 execuções, contando cinco sementes por mapa.
+
+A animação do cenário 2 mostra o comportamento por trás da tabela: o simples volta a células já limpas e deixa uma suja; o com memória cobre a fronteira do mapa e, no período 18, a ação passa a ser parar. O contador de movimentos dele trava em 13. O do simples segue até 77.
 
 ## Slide 6: Racionalidade e limites do experimento
 
 Tempo sugerido: 1 minuto e 30 segundos
 
-Racionalidade significa escolher ações adequadas à medida de desempenho, considerando a informação disponível. A memória permitiu usar o histórico para orientar a exploração e favoreceu a limpeza mais cedo nestes testes. Isso explica as maiores pontuações. Entretanto, o agente não é necessariamente ótimo. Os dois continuam andando até completar 80 períodos e não reconhecem que toda a região acessível está limpa. Depois da limpeza completa, esses movimentos deixam de ajudar e reduzem a segunda pontuação. O simulador sabe que acabou a sujeira, mas essa informação global não é entregue aos agentes. A conclusão é que o agente com memória teve melhor desempenho nos testes realizados, e não que sempre será melhor. Para ampliar a evidência, podemos repetir com outras sementes e configurações. Uma melhoria futura seria construir um mapa dos locais descobertos e reconhecer o término da exploração antes de decidir parar.
+Racionalidade é escolher a ação adequada à medida de desempenho, com a informação disponível. O mapa interno permite explorar sem repetir à toa e reconhecer quando a região conhecida está limpa. Parar nesse momento é adequado à segunda medida: cada movimento depois da limpeza desconta um ponto e não aumenta a limpeza. O agente simples não tem como saber disso, porque esquece o que já percebeu.
+
+Isso não torna o programa ótimo em qualquer mundo. A grade tem tamanho fixo, os trinta mapas usam até dois obstáculos e o sorteio do agente simples está limitado a cinco sementes. A conclusão é que, nestes testes, o agente com memória foi mais adequado às duas medidas, em especial à que penaliza movimento.
 
 ## Respostas rápidas
 
-- Como alterar os testes? No início de agentes.py, mude SEMENTE, PASSOS, TAMANHO ou CENARIOS e execute novamente. Os slides apresentam os valores padrão: semente 42, 80 passos e grade 4 por 4. Os números dos slides não se atualizam automaticamente.
-- Por que os resultados se repetem? Os cenários são fixos e o agente simples usa a semente 42.
-- Por que 76 movimentos? Foram 80 ações, sendo quatro aspirações e 76 movimentos.
+- Como alterar os testes? No início de `agentes.py`, mude `SEMENTE`, `PASSOS`, `TAMANHO`, `CENARIOS` ou a quantidade de cenários aleatórios e execute de novo.
+- Como ver o passo a passo? `python3 agentes.py --replay` ou abra `animacao.html`.
+- Por que os resultados se repetem? Os mapas e as sementes estão fixos.
+- Por que o agente com memória faz tão poucos movimentos? Ele aspira, percorre a área alcançável e para. No cenário 1 são 15 movimentos e 4 aspirações; a parada começa no período 20.
 - Como pode ser determinístico se há sorteio? O sorteio escolhe a ação. A mesma ação no mesmo estado tem sempre o mesmo efeito.
-- O agente com memória conhece o mapa? Não. Ele registra posições relativas e visitas conforme se movimenta.
-- Por que o agente não para quando termina? Esta versão não tem um mecanismo para reconhecer a limpeza completa.
-- A segunda medida é exatamente a do professor? Adotamos limpeza acumulada menos movimentos. É preciso confirmar a interpretação, pois o texto não repete “em cada período” na segunda medida.
+- O agente com memória conhece o mapa desde o início? Não. Ele registra células relativas e visitas conforme percebe o ambiente.
+- A segunda medida é exatamente a do enunciado? Usamos a limpeza acumulada menos o total de movimentos. O texto não repete “em cada período” na segunda medida; esta leitura fica explícita.
 
-Fontes: enunciado do Projeto 1, páginas 1 e 2, e execução de agentes.py.
+Fontes: enunciado do Projeto 1 e execução de `agentes.py`.

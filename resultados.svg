@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="760" viewBox="0 0 980 760">
+<rect width="100%" height="100%" fill="#ffffff" />
+<text x="48" y="36" font-size="20" font-family="sans-serif" fill="#1d2430">Pontuacao dos aspiradores</text>
+<text x="48" y="58" font-size="13" font-family="sans-serif" fill="#667085">Grade 4x4. Azul: simples. Verde: com memoria. Nas medias aleatorias, o traco e o desvio entre cenarios.</text>
+<rect x="48" y="78" width="14" height="14" rx="3" fill="#2f6fad" />
+<text x="68" y="90" font-size="12" font-family="sans-serif" fill="#1d2430">Simples</text>
+<rect x="140" y="78" width="14" height="14" rx="3" fill="#1f8a5b" />
+<text x="160" y="90" font-size="12" font-family="sans-serif" fill="#1d2430">Com memoria</text>
+<text x="70" y="128" font-size="15" font-family="sans-serif" fill="#1d2430">Cenarios fixos — Pontos 1</text>
+<line x1="70" y1="356.0" x2="490" y2="356.0" stroke="#e4e8ee" />
+<text x="62" y="360.0" font-size="11" text-anchor="end" font-family="sans-serif" fill="#667085">0</text>
+<line x1="70" y1="251.0" x2="490" y2="251.0" stroke="#e4e8ee" />
+<text x="62" y="255.0" font-size="11" text-anchor="end" font-family="sans-serif" fill="#667085">741</text>
+<line x1="70" y1="146.0" x2="490" y2="146.0" stroke="#e4e8ee" />
+<text x="62" y="150.0" font-size="11" text-anchor="end" font-family="sans-serif" fill="#667085">1482</text>
+<line x1="70" y1="356" x2="490" y2="356" stroke="#98a2b3" />
+<rect x="91.0" y="189.7" width="28.0" height="166.3" rx="4" fill="#2f6fad" />
+<text x="105.0" y="181.7" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1174</text>
+<text x="105.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C1 S</text>
+<rect x="161.0" y="178.0" width="28.0" height="178.0" rx="4" fill="#1f8a5b" />
+<text x="175.0" y="170.0" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1256</text>
+<text x="175.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C1 M</text>
+<rect x="231.0" y="213.0" width="28.0" height="143.0" rx="4" fill="#2f6fad" />
+<text x="245.0" y="205.0" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1009</text>
+<text x="245.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C2 S</text>
+<rect x="301.0" y="202.5" width="28.0" height="153.5" rx="4" fill="#1f8a5b" />
+<text x="315.0" y="194.5" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1083</text>
+<text x="315.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C2 M</text>
+<rect x="371.0" y="213.0" width="28.0" height="143.0" rx="4" fill="#2f6fad" />
+<text x="385.0" y="205.0" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1009</text>
+<text x="385.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C3 S</text>
+<rect x="441.0" y="204.2" width="28.0" height="151.8" rx="4" fill="#1f8a5b" />
+<text x="455.0" y="196.2" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1071</text>
+<text x="455.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C3 M</text>
+<text x="530" y="128" font-size="15" font-family="sans-serif" fill="#1d2430">Cenarios fixos — Pontos 2</text>
+<line x1="530" y1="356.0" x2="950" y2="356.0" stroke="#e4e8ee" />
+<text x="522" y="360.0" font-size="11" text-anchor="end" font-family="sans-serif" fill="#667085">0</text>
+<line x1="530" y1="251.0" x2="950" y2="251.0" stroke="#e4e8ee" />
+<text x="522" y="255.0" font-size="11" text-anchor="end" font-family="sans-serif" fill="#667085">732</text>
+<line x1="530" y1="146.0" x2="950" y2="146.0" stroke="#e4e8ee" />
+<text x="522" y="150.0" font-size="11" text-anchor="end" font-family="sans-serif" fill="#667085">1464</text>
+<line x1="530" y1="356" x2="950" y2="356" stroke="#98a2b3" />
+<rect x="551.0" y="198.5" width="28.0" height="157.5" rx="4" fill="#2f6fad" />
+<text x="565.0" y="190.5" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1098</text>
+<text x="565.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C1 S</text>
+<rect x="621.0" y="178.0" width="28.0" height="178.0" rx="4" fill="#1f8a5b" />
+<text x="635.0" y="170.0" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1241</text>
+<text x="635.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C1 M</text>
+<rect x="691.0" y="222.3" width="28.0" height="133.7" rx="4" fill="#2f6fad" />
+<text x="705.0" y="214.3" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">932</text>
+<text x="705.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C2 S</text>
+<rect x="761.0" y="202.6" width="28.0" height="153.4" rx="4" fill="#1f8a5b" />
+<text x="775.0" y="194.6" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1070</text>
+<text x="775.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C2 M</text>
+<rect x="831.0" y="222.2" width="28.0" height="133.8" rx="4" fill="#2f6fad" />
+<text x="845.0" y="214.2" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">933</text>
+<text x="845.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C3 S</text>
+<rect x="901.0" y="205.1" width="28.0" height="150.9" rx="4" fill="#1f8a5b" />
+<text x="915.0" y="197.1" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1052</text>
+<text x="915.0" y="374" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">C3 M</text>
+<text x="70" y="448" font-size="15" font-family="sans-serif" fill="#1d2430">Media nos 30 cenarios aleatorios</text>
+<line x1="70" y1="696.0" x2="930" y2="696.0" stroke="#e4e8ee" />
+<text x="62" y="700.0" font-size="11" text-anchor="end" font-family="sans-serif" fill="#667085">0</text>
+<line x1="70" y1="581.0" x2="930" y2="581.0" stroke="#e4e8ee" />
+<text x="62" y="585.0" font-size="11" text-anchor="end" font-family="sans-serif" fill="#667085">723</text>
+<line x1="70" y1="466.0" x2="930" y2="466.0" stroke="#e4e8ee" />
+<text x="62" y="470.0" font-size="11" text-anchor="end" font-family="sans-serif" fill="#667085">1447</text>
+<line x1="70" y1="696" x2="930" y2="696" stroke="#98a2b3" />
+<rect x="163.5" y="519.8" width="28.0" height="176.2" rx="4" fill="#2f6fad" />
+<line x1="177.5" y1="507.5" x2="177.5" y2="532.1" stroke="#1d2430" stroke-width="1.4" />
+<text x="177.5" y="511.8" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1108</text>
+<text x="177.5" y="714" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">S P1</text>
+<rect x="378.5" y="511.2" width="28.0" height="184.8" rx="4" fill="#1f8a5b" />
+<line x1="392.5" y1="501.1" x2="392.5" y2="521.4" stroke="#1d2430" stroke-width="1.4" />
+<text x="392.5" y="503.2" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1162</text>
+<text x="392.5" y="714" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">M P1</text>
+<rect x="593.5" y="532.0" width="28.0" height="164.0" rx="4" fill="#2f6fad" />
+<line x1="607.5" y1="519.7" x2="607.5" y2="544.3" stroke="#1d2430" stroke-width="1.4" />
+<text x="607.5" y="524.0" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1032</text>
+<text x="607.5" y="714" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">S P2</text>
+<rect x="808.5" y="513.7" width="28.0" height="182.3" rx="4" fill="#1f8a5b" />
+<line x1="822.5" y1="503.6" x2="822.5" y2="523.8" stroke="#1d2430" stroke-width="1.4" />
+<text x="822.5" y="505.7" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#1d2430">1147</text>
+<text x="822.5" y="714" font-size="11" text-anchor="middle" font-family="sans-serif" fill="#475467">M P2</text>
+</svg>
