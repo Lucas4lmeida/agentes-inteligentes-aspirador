@@ -294,11 +294,15 @@ def simular(agente, sujeira_inicial, obstaculos, inicio, periodos=PASSOS, regist
 
 
 def gerar_cenarios(quantidade, semente, tamanho=TAMANHO, max_obstaculos=2):
+    if tamanho < 1 or max_obstaculos < 0:
+        raise ValueError("O tamanho deve ser positivo e max_obstaculos nao pode ser negativo.")
     sorteio = random.Random(semente)
     todas = [(linha, coluna) for linha in range(tamanho) for coluna in range(tamanho)]
+    # Reserva pelo menos uma celula livre para a posicao inicial.
+    limite_obstaculos = min(max_obstaculos, len(todas) - 1)
     cenarios = []
     for _ in range(quantidade):
-        n_obstaculos = sorteio.randint(0, max_obstaculos)
+        n_obstaculos = sorteio.randint(0, limite_obstaculos)
         obstaculos = set(sorteio.sample(todas, n_obstaculos))
         livres = [posicao for posicao in todas if posicao not in obstaculos]
         teto = min(5, len(livres))
@@ -1058,8 +1062,10 @@ def main(argv=None):
     parser = argparse.ArgumentParser(
         description="Avalia um aspirador reativo simples e outro baseado em modelo."
     )
+    if not CENARIOS:
+        parser.error("Adicione pelo menos um cenario em CENARIOS.")
     parser.add_argument("--replay", action="store_true", help="Anima um cenario fixo no terminal")
-    parser.add_argument("--cenario", type=int, default=2, choices=[1, 2, 3])
+    parser.add_argument("--cenario", type=int, default=min(2, len(CENARIOS)), choices=range(1, len(CENARIOS) + 1))
     parser.add_argument("--atraso", type=float, default=0.2, help="Segundos entre passos da animacao")
     parser.add_argument("--aleatorios", type=int, default=CENARIOS_ALEATORIOS)
     parser.add_argument("--sementes", type=int, default=SEMENTES_SIMPLES)

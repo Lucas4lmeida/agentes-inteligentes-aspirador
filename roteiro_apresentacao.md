@@ -47,7 +47,7 @@ Alc. é a sujeira que ainda dava para alcançar. No cenário 2 o agente simples 
 
 Tempo sugerido: 1 minuto e 20 segundos
 
-O gráfico em `resultados.svg` repete os três cenários e mostra a média dos trinta mapas aleatórios, com o desvio entre configurações. Azul é o agente simples e verde é o agente com memória.
+Os dois gráficos do slide mostram os três cenários fixos, e o texto abaixo destaca a média de Pontos 2 nos trinta mapas aleatórios. Azul é o agente simples e verde é o agente com memória. O arquivo `resultados.svg` traz também o gráfico das médias aleatórias, com o desvio entre configurações.
 
 Nesses trinta mapas, a média de Pontos 1 foi 1108,29 para o simples e 1162,20 para o com memória. A média de Pontos 2 foi 1031,60 e 1146,80. O desvio entre cenários ficou em torno de 77 pontos para o simples e 64 para o com memória. O agente com memória teve Pontos 2 maior nos 30 casos. Ele removeu a sujeira alcançável em todos. O simples fez isso em 127 das 150 execuções, contando cinco sementes por mapa.
 

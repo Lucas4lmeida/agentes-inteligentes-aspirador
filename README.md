@@ -25,6 +25,14 @@ python3 agentes.py --replay --cenario 2 --atraso 0.3
 
 No navegador, abra `animacao.html`. Espaço reproduz ou pausa. As setas mudam o período.
 
+O replay aceita todos os cenários cadastrados em `CENARIOS`. Se houver apenas um, ele será o padrão. O gerador aleatório permite uma grade 1×1 e sempre reserva uma posição livre para o agente.
+
+Para executar os testes básicos:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
 ## Alterar os testes
 
 As configurações ficam no início de `agentes.py`:
@@ -83,6 +91,7 @@ O agente com memória limpa a região conhecida e para. O agente simples continu
 
 ## Apresentação
 
+- [Slides atualizados, com seis páginas](apresentacao_agentes.pptx)
 - [Gráfico](resultados.svg)
 - [Passo a passo](animacao.html)
 - [Roteiro de fala](roteiro_apresentacao.md)
