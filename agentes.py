@@ -11,15 +11,27 @@ Obstaculos nao contam como quadrados limpos.
 import random
 
 
+# CONFIGURACOES: altere estes valores para fazer outros testes.
+SEMENTE = 42  # Mesma semente repete as escolhas do agente simples.
+PASSOS = 80  # Total de acoes por execucao, incluindo aspirar.
+TAMANHO = 4  # Quantidade de linhas e colunas da grade.
+
+# Cada cenario: sujeira inicial, obstaculos, posicao inicial.
+# Posicoes usam (linha, coluna), de 0 ate TAMANHO - 1.
+CENARIOS = [
+    ({(0, 0), (0, 3), (3, 0), (3, 3)}, set(), (0, 0)),
+    ({(0, 2), (1, 3), (2, 0), (3, 2)}, {(1, 1), (2, 1)}, (3, 0)),
+    ({(0, 0), (1, 0), (2, 2), (3, 3)}, {(1, 2), (2, 1)}, (0, 3)),
+]
+
+# Regras fixas: direita, baixo, esquerda e cima.
 DIRECOES = ((0, 1), (1, 0), (0, -1), (-1, 0))
 ASPIRAR = "aspirar"
 PARAR = "parar"
-TAMANHO = 4
-PERIODOS = 80
 
 
 class ReativoSimples:
-    def __init__(self, semente=42):
+    def __init__(self, semente=SEMENTE):
         self.sorteio = random.Random(semente)
 
     def agir(self, sujo, caminhos):
@@ -53,7 +65,15 @@ class ReativoComMemoria:
         return direcao
 
 
-def simular(agente, sujeira_inicial, obstaculos, inicio, periodos=PERIODOS):
+def simular(agente, sujeira_inicial, obstaculos, inicio, periodos=PASSOS):
+    if TAMANHO < 1 or periodos < 1:
+        raise ValueError("TAMANHO e PASSOS devem ser maiores que zero.")
+    posicoes = set(sujeira_inicial) | set(obstaculos) | {inicio}
+    if any(not (0 <= l < TAMANHO and 0 <= c < TAMANHO) for l, c in posicoes):
+        raise ValueError("Ajuste CENARIOS: ha posicoes fora do TAMANHO da grade.")
+    if inicio in obstaculos or set(sujeira_inicial) & set(obstaculos):
+        raise ValueError("O inicio e a sujeira nao podem ficar em obstaculos.")
+
     sujeira = set(sujeira_inicial)
     posicao = inicio
     movimentos = 0
@@ -86,22 +106,18 @@ def simular(agente, sujeira_inicial, obstaculos, inicio, periodos=PERIODOS):
 
 
 def main():
-    # Cada cenario: sujeira inicial, obstaculos, posicao inicial.
-    cenarios = [
-        ({(0, 0), (0, 3), (3, 0), (3, 3)}, set(), (0, 0)),
-        ({(0, 2), (1, 3), (2, 0), (3, 2)}, {(1, 1), (2, 1)}, (3, 0)),
-        ({(0, 0), (1, 0), (2, 2), (3, 3)}, {(1, 2), (2, 1)}, (0, 3)),
-    ]
+    if not CENARIOS:
+        raise ValueError("Adicione pelo menos um cenario em CENARIOS.")
     tipos = [("Simples", ReativoSimples), ("Com memoria", ReativoComMemoria)]
     totais = {nome: [0, 0] for nome, _ in tipos}
 
-    print(f"Ambiente: {TAMANHO}x{TAMANHO} | Periodos por execucao: {PERIODOS}")
+    print(f"Ambiente: {TAMANHO}x{TAMANHO} | Passos por execucao: {PASSOS}")
     print("Pontos 1: limpeza acumulada | Pontos 2: Pontos 1 - movimentos")
-    print("O agente simples usa sorteio com semente 42 para repetir o teste.\n")
+    print(f"O agente simples usa sorteio com semente {SEMENTE} para repetir o teste.\n")
     print(f"{'Cenario':<9}{'Agente':<15}{'Sujeira final':>14}{'Movimentos':>13}"
           f"{'Pontos 1':>11}{'Pontos 2':>11}")
 
-    for numero, (sujeira, obstaculos, inicio) in enumerate(cenarios, 1):
+    for numero, (sujeira, obstaculos, inicio) in enumerate(CENARIOS, 1):
         for nome, classe in tipos:
             restante, movimentos, p1, p2 = simular(classe(), sujeira, obstaculos, inicio)
             totais[nome][0] += p1
@@ -109,10 +125,10 @@ def main():
             print(f"{numero:<9}{nome:<15}{restante:>14}{movimentos:>13}"
                   f"{p1:>11}{p2:>11}")
 
-    print("\nMedia das pontuacoes nos tres cenarios:")
+    print(f"\nMedia das pontuacoes nos {len(CENARIOS)} cenarios:")
     for nome, (p1, p2) in totais.items():
-        print(f"{nome}: Pontos 1 = {p1 / len(cenarios):.2f} | "
-              f"Pontos 2 = {p2 / len(cenarios):.2f}")
+        print(f"{nome}: Pontos 1 = {p1 / len(CENARIOS):.2f} | "
+              f"Pontos 2 = {p2 / len(CENARIOS):.2f}")
 
 
 if __name__ == "__main__":

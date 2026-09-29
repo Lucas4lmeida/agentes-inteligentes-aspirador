@@ -40,6 +40,7 @@ Racionalidade significa escolher ações adequadas à medida de desempenho, cons
 
 ## Respostas rápidas
 
+- Como alterar os testes? No início de agentes.py, mude SEMENTE, PASSOS, TAMANHO ou CENARIOS e execute novamente. Os slides apresentam os valores padrão: semente 42, 80 passos e grade 4 por 4. Os números dos slides não se atualizam automaticamente.
 - Por que os resultados se repetem? Os cenários são fixos e o agente simples usa a semente 42.
 - Por que 76 movimentos? Foram 80 ações, sendo quatro aspirações e 76 movimentos.
 - Como pode ser determinístico se há sorteio? O sorteio escolhe a ação. A mesma ação no mesmo estado tem sempre o mesmo efeito.

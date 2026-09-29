@@ -10,6 +10,23 @@ Requer Python 3. Nao usa bibliotecas externas.
 python agentes.py
 ```
 
+## Alterar os testes
+
+As configuracoes ficam no inicio de `agentes.py`:
+
+```python
+SEMENTE = 42
+PASSOS = 80
+TAMANHO = 4
+```
+
+- `SEMENTE`: controla o sorteio do agente simples. Troque, por exemplo, para `7` para testar outra sequencia.
+- `PASSOS`: quantidade de acoes de cada agente, incluindo aspirar. Troque, por exemplo, para `200`.
+- `TAMANHO`: quantidade de linhas e colunas. Ao diminuir a grade, ajuste as posicoes dos cenarios.
+- `CENARIOS`: lista de sujeiras, obstaculos e posicoes iniciais. As coordenadas comecam em zero.
+
+Execute novamente apos alterar o arquivo. Os resultados abaixo e nos slides correspondem aos valores padrao e nao se atualizam automaticamente quando voce altera os testes.
+
 ## Agentes
 
 - **Reativo simples:** aspira quando encontra sujeira. Caso contrario, sorteia um caminho livre, sem guardar os locais visitados.
