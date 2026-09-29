@@ -843,7 +843,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <button id="anterior">Anterior</button>
   <button id="proximo">Proximo</button>
   <input id="trilha" type="range" min="0" max="80" value="0" aria-label="Periodo">
-  <label class="velocidade">Velocidade <input id="velocidade" type="range" min="40" max="700" value="180"></label>
+  <label class="velocidade">Velocidade <input id="velocidade" type="range" min="40" max="700" value="560"></label>
   <div class="passo" id="rotulo-passo">Inicio</div>
 </div>
 <div class="palco">
@@ -889,7 +889,10 @@ let reproduzindo = false;
 let timer = null;
 
 function chave(l, c) { return l + "," + c; }
-function atraso() { return Number(document.getElementById("velocidade").value); }
+function atraso() {
+  const controle = document.getElementById("velocidade");
+  return Number(controle.min) + Number(controle.max) - Number(controle.value);
+}
 function atual() { return DADOS.cenarios[indice]; }
 function ultimo() { return atual().simples.length - 1; }
 
